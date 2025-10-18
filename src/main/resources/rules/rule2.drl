@@ -1,0 +1,66 @@
+package com.test.drl;
+unit PolicyUnit;
+
+rule "rule2"
+	salience -200
+	when
+		result: /results[ this != null ]
+        /eventTypes[ event == "EXTERNAL1",  customEvent == "EXTERNAL2", customEvent == "EXTERNAL3", customEvent == "EXTERNAL4", customEvent == "EXTERNAL5", customEvent == "EXTERNAL5", customEvent == null ]
+        /channels[ channel == "WEB" ]
+		( ( /facts [ name == "SCORING", value  >= 200 && value <= 300 ]) )
+		( ( /facts [ name == "TOP1", valueStr != null, valueStr.contains("R21") ])
+		 or ( /facts [ name == "TOP2", valueStr != null, valueStr.contains("R22") ])
+		 or ( /facts [ name == "TOP3", valueStr != null, valueStr.contains("R23") ])
+		 or ( /facts [ name == "TOP4", valueStr != null, valueStr.contains("R24") ])
+		 or ( /facts [ name == "TOP1", valueStr != null, valueStr.contains("R31") ])
+		 or ( /facts [ name == "TOP2", valueStr != null, valueStr.contains("R32") ])
+		 or ( /facts [ name == "TOP3", valueStr != null, valueStr.contains("R33") ])
+		 or ( /facts [ name == "TOP4", valueStr != null, valueStr.contains("R34") ]) )
+		( ( /facts [ name == "TOP1", valueStr != null, valueStr.contains("R41") ])
+		 or ( /facts [ name == "TOP2", valueStr != null, valueStr.contains("R42") ])
+		 or ( /facts [ name == "TOP3", valueStr != null, valueStr.contains("R43") ])
+		 or ( /facts [ name == "TOP4", valueStr != null, valueStr.contains("R44") ])
+		 or ( /facts [ name == "TOP1", valueStr != null, valueStr.contains("R51") ])
+		 or ( /facts [ name == "TOP2", valueStr != null, valueStr.contains("R52") ])
+		 or ( /facts [ name == "TOP3", valueStr != null, valueStr.contains("R53") ])
+		 or ( /facts [ name == "TOP4", valueStr != null, valueStr.contains("R54") ]) )
+		( ( /facts [ name == "TOP1", valueStr != null, valueStr.contains("R61") ])
+		 or ( /facts [ name == "TOP2", valueStr != null, valueStr.contains("R62") ])
+		 or ( /facts [ name == "TOP3", valueStr != null, valueStr.contains("R63") ])
+		 or ( /facts [ name == "TOP1", valueStr != null, valueStr.contains("R71") ])
+		 or ( /facts [ name == "TOP2", valueStr != null, valueStr.contains("R72") ])
+		 or ( /facts [ name == "TOP3", valueStr != null, valueStr.contains("R73") ]) )
+		( ( /facts [ name == "TOP1", valueStr != null, valueStr.contains("R81") ])
+		 or ( /facts [ name == "TOP2", valueStr != null, valueStr.contains("R82") ])
+		 or ( /facts [ name == "TOP3", valueStr != null, valueStr.contains("R83") ])
+		 or ( /facts [ name == "TOP4", valueStr != null, valueStr.contains("R84") ])
+		 or ( /facts [ name == "TOP1", valueStr != null, valueStr.contains("R91") ])
+		 or ( /facts [ name == "TOP2", valueStr != null, valueStr.contains("R92") ])
+		 or ( /facts [ name == "TOP3", valueStr != null, valueStr.contains("R93") ])
+		 or ( /facts [ name == "TOP4", valueStr != null, valueStr.contains("R94") ]) )
+		( ( /facts [ name == "ID1", val61: value, tp61: type ]
+		 and eval( listManager.validValue(val61, tp61, "e11cfe001f") ))
+		 or ( /facts [ name == "ID1", value == "3" ])
+		 or ( /facts [ name == "DECLINES", value >= 3 ]) )
+		( ( /facts [ name == "DECLINES", value > 2 ]) )
+		( ( /facts [ name == "SCORING", value == 1 ])
+		 or ( /facts [ name == "TOP1", value != "2" ])
+		 or ( /facts [ name == "TOP2", val83: value, tp83: type ]
+		 and eval( listManager.validValue(val83, tp83, "c8cdea680002") ))
+		 or ( /facts [ name == "TOP3", val84: value, tp84: type ]
+		 and eval( listManager.inValidValue(val84, tp84, "aaa29006a") ))
+		 or ( /facts [ name == "TOP4", val85: value, tp85: type ]
+		 and eval(! listManager.validValue(val85, tp85, "1cfe001f") )) )
+		( ( /facts [ name == "ID1", valueStr != null, valueStr.contains("abc") ])
+		 or /facts [ name == "SCORING" , v192 : value ]
+		 and /facts [ name == "DECLINES2" , v192 >= value ]
+		 or ( /facts [ name == "TOP1", valueStr != null, !valueStr.contains("abc") ])
+		 or ( not /facts [ name == "TOP2" ] )
+		 or /facts [ name == "TOP3" , v195 : value ]
+		 and /facts [ name == "ID1" , v195 == value ] )
+		( ( /facts [ name == "DECLINES3", value == "ACTION" ])
+		 or /facts [ name == "TOP4", factval102: valueStr, factval102 != null ]
+		 and /facts [ name == "ID1", otherfactval102: valueStr, otherfactval102 != null, otherfactval102.contains(factval102) ] )
+	then
+		result.addFiredRule("rule2");
+end

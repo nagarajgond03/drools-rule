@@ -38,7 +38,7 @@ public class RuleLoader {
         KieServices ks = KieServices.get();
         KieFileSystem kfs = ks.newKieFileSystem();
 
-        String drlPath = "/rules/rule1.drl";
+        String drlPath = "/rules/rule2.drl";
         String drlContent = new String(getClass().getResourceAsStream(drlPath).readAllBytes(), StandardCharsets.UTF_8);
 
         kfs.write("src/main/resources/test/drl" + drlPath, drlContent);

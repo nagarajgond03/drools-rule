@@ -1,14 +1,19 @@
+/**
+ * 
+ */
 package com.test.drl;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+
 @Setter
 @Getter
 @ToString
-public class DroolsChannelIndicator {
+public class Event {
 
-    private String channelIndicator;
+	private String event;
+	private String customEvent;
 
 }
