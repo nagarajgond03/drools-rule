@@ -1,0 +1,19 @@
+package com.test.drl;
+
+unit PolicyUnit;
+
+import com.test.drl.BasicIpUtils;
+import com.test.drl.StringUtils;
+global com.test.drl.ListManager listManager;
+
+rule "rule5_preprocess1"
+	salience -997
+	when
+		 ($f: /facts [ name == "address", value == "1.1.1.1" ])
+		 or ( not $f: /facts [ name == "location.city" ] )
+		 or (  $f: /facts [ name == "address", value == "1.1.1.2"])
+	then
+		$f.setPreprocess1(true);
+		facts.update($f);
+		System.out.println("rule5_preprocess1 fired for fact: " + $f);
+end

@@ -10,5 +10,6 @@ import lombok.ToString;
 public class Channel {
 
     private String channel;
+    private String channelIndicator;
 
 }

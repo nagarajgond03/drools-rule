@@ -3,6 +3,7 @@ package com.test.drl;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
@@ -15,6 +16,14 @@ public class DroolsFact {
     private final Object value;
     private final String valueStr;
     private final Object type;
+    @Setter
+    private boolean preprocess1;
+    @Setter
+    private boolean preprocess2;
+    @Setter
+    private boolean preprocess3;
+    @Setter
+    private boolean preprocess4;
 
     public DroolsFact(String name, Object value, Object type) {
         this.name = name;

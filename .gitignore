@@ -1,2 +1,9 @@
 /test-rule (1).iml
 /target/
+/src/main/java/com/test/drl/BasicIpUtils.java
+/src/main/java/com/test/drl/ConfigurationFact.java
+/src/main/resources/rules/rule3.drl
+/src/main/resources/rules/rule4.drl
+/src/main/resources/rules/rule_psr_ok.drl
+/src/main/resources/rules/rule_psr_oom.drl
+/src/main/java/com/test/drl/StringUtils.java

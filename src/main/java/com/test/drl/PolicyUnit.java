@@ -15,11 +15,12 @@ public class PolicyUnit implements RuleUnitData {
     private final DataStore<Event> eventTypes;
     private final DataStore<Channel> channels;
     private final DataStore<DroolsFact> facts;
+    private final DataStore<ConfigurationFact> configurationFact;
     private ListManager listManager;
 
     // Default constructor creates in-memory stores
     public PolicyUnit() {
-        this(DataSource.createStore(), DataSource.createStore(), DataSource.createStore(), DataSource.createStore());
+        this(DataSource.createStore(), DataSource.createStore(), DataSource.createStore(), DataSource.createStore(), DataSource.createStore());
     }
 }
 
